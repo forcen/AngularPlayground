@@ -1,0 +1,44 @@
+.panel-default{margin:0}
+
+.panel-body{height:157px;overflow:hidden;}
+.panel-body ul{list-style:none;font-size:14px;overflow:auto;height:70px;padding:0}
+.panel-body li{margin-bottom:5px;white-space:nowrap;text-overflow:ellipsis}
+
+.transactions-header {margin-top:10px;margin-bottom:5px;border-bottom:1px solid #eee}
+.transactions-header b{cursor:pointer}
+.transactions-order {display:none}
+
+.cnt {display:inline-block;vertical-align:top;text-overflow:ellipsis;}
+.one {width:25%}
+.two {width:25%}
+.thr {width:80px;text-align:right}
+.fou {width:100px;text-align:right}
+
+.ordered{color:red}
+.dispute {float:right;margin-right:2em;color:blue;text-decoration:underline;cursor:pointer}
+.search{width:150px}
+
+@media (max-width: 600px) {
+	.transactions-header {display:none}
+	.transactions-order {display:block;margin:12px 0;}
+	.panel-body{font-size:18px}
+
+	.panel-body li span{font-size:18px}
+	.panel-body li {border-bottom:1px solid #ccc;margin-bottom:12px;padding:12px 0}
+	.cnt {display:block}
+	.one {width:100%}
+	.two {width:100%}
+	.thr {width:100%;text-align:left}
+	.fou {width:100%;text-align:left}
+	.dispute {float:none;display:block}
+
+	.type-1, .type-2, .type-3, .type-4, .type-5 {
+		padding-left:28px;
+		background: url(icons.png) no-repeat;
+	}
+	.type-1{background-position: 0 2px}
+	.type-2{background-position: 0 -22px}
+	.type-3{background-position: 0 -94px}
+	.type-4{background-position: 0 -69px}
+	.type-5{background-position: 0 -46px}
+}
