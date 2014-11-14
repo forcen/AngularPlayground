@@ -30,6 +30,10 @@ angular.module('widgetTransactionsControllers', [])
 		$scope.getOrderedBy($scope.orderBy.param);
 	};
 
+	/**
+	 * instead of using orderby directive I want to get the results ordered from server
+	 * @param  {String} strOrder optional
+	 */
 	$scope.getOrderedBy = function (strOrder) {
 		objTransactions
 			.get(strOrder)
