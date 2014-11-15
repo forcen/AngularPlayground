@@ -37,8 +37,8 @@ angular.module('widgetTransactionsControllers', [])
 	$scope.getOrderedBy = function (strOrder) {
 		objTransactions
 			.get(strOrder)
-			.then(function(data) {
-				$scope.transactions = data;
+			.then(function(result) {
+				$scope.transactions = result.data;
 			});
 	};
 
@@ -68,7 +68,7 @@ angular.module('widgetTransactionsControllers', [])
 		objDisputes
 			.doDispute(strID)
 			.then(function (result) {
-						alert(result);
+						alert(result.data.message);
 					}
 			);
 

@@ -12,12 +12,13 @@ angular.module('widgetTransactionsServices', [])
 	     * @param  {String} strID the id of the transaction to dispute
 	     */
     	function get (strOrder) {
-    		var request = $http({
-			    				method: 'get',
-		                        url: '../../api/transactions' + (strOrder ? '?sort=' + strOrder : '')
-		                    });
-
-    		return request.then(handleSuccess, handleError);
+    		return $http({
+			    			method: 'get',
+		                    url: '../../api/transactions',
+		                    params: strOrder ? {sort: strOrder} : null
+		                 })
+    				.success(handleSuccess)
+    				.error(handleError);
 		}
 
 		function handleSuccess (result) {
@@ -25,7 +26,7 @@ angular.module('widgetTransactionsServices', [])
 		}
 
 		function handleError( result ) {
-			if (!angular.isObject(result.data) || !result.data.message) {
+			if (!angular.isObject(result) || !result.data.message) {
 				return $q.reject('An unknown error occurred.');
 			}
 			return $q.reject(result.data.message);
@@ -44,24 +45,24 @@ angular.module('widgetTransactionsServices', [])
 	     * @param  {String} strID the id of the transaction to dispute
 	     */
     	function doDispute (strID) {
-    		var request = $http({
-			    				method: 'post',
-		                        url: '../../api/transactions/' + strID + '/dispute',
-		                        params: {}
-		                    });
 
-    		return request.then(handleSuccess, handleError);
+    		return $http({
+		    				method: 'post',
+	                        url: '../../api/transactions/' + strID + '/dispute'
+	                    })
+    				.success(handleSuccess)
+    				.error(handleError);
 		}
 
 		function handleSuccess (result) {
-			return result.data.message;
+			return result.message;
 		}
 
-		function handleError( result ) {
-			if (!angular.isObject(result.data) || !result.data.message) {
+		function handleError(result) {
+			if (!angular.isObject(result) || !result.message) {
 				return $q.reject('An unknown error occurred.');
 			}
-			return $q.reject(result.data.message);
+			return $q.reject(result.message);
 		}
 
 		return ({
